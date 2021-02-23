@@ -3,10 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import {BrowserRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, RouteComponentProps } from 'react-router-dom'
+import { AuthProvider } from './components/Auth';
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+      <AuthProvider>
+      {/*<BrowserRouter>*/}
+          <Provider store={store}>
+          <App/>
+          </Provider>
+      </AuthProvider>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
